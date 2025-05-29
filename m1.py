@@ -18,7 +18,6 @@ def cadastrar_equipamento():
     else:
         print('operacao invalida!')
 
-
 def adicionar_notebook():
     print('\n === Cadastro de Notebook ===')
     marca = input('Digite a marca do notebook: ').upper()
@@ -64,9 +63,8 @@ def adicionar_tablet():
     equipamentos.append(novo_tablet)
     print(f'o Tablet {novo_tablet["Modelo"]} foi cadastrado!')
 
-
 def serial_check(tipo, serial):
-    if any(equipamento['Tipo'] == tipo and equipamento['Serial']== serial for equipamento in equipamentos):
+    if any(equipamento['Tipo'] == tipo and equipamento['Serial'] == serial for equipamento in equipamentos):
         return True
     return False
 
@@ -108,6 +106,21 @@ while True :
     elif menu_option == '2':
         print('\n === Mostrar equipamentos ===')
         for equipamento in equipamentos:
-            print(f"{equipamento['Tipo']}  {equipamento['Marca']}  {equipamento['Modelo']}  {equipamento['Serial']}")
-    
+            print(f"{equipamento['Tipo']}  {equipamento['Marca']}  {equipamento['Modelo']}  {equipamento['Serial']}");
 
+    elif menu_option =='3':
+        print('\n === Digite o serial do equipamento a ser remoido ===')
+        serial_remove = int(input('Digite o serial'))
+        
+        for equipamento in equipamentos:
+            if equipamento['Serial'] == serial_remove:
+                equipamentos.remove(equipamento)
+                print('Equipamento removido.')
+                
+    elif menu_option == '4':
+        exit()
+
+    else:
+        print('Escolha uma opcao valida.')
+
+    
